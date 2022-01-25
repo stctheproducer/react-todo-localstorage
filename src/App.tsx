@@ -3,6 +3,8 @@ import { useRef } from "react";
 import Header from "./components/Header";
 import usePersistedState from "./hooks/usePersistedState";
 
+import { DeleteIcon } from "@chakra-ui/icons";
+
 import { Task } from "./types/Task";
 
 export default function App() {
@@ -50,7 +52,9 @@ export default function App() {
               onChange={() => toggleTask(index)}
             />
             <span>{task.name}</span>
-            <button onClick={() => deleteTask(index)}>Delete task</button>
+            <button onClick={() => deleteTask(index)}>
+              <DeleteIcon />
+            </button>
           </div>
         ))}
       </div>
