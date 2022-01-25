@@ -1,4 +1,6 @@
+import { Button, Input } from "@chakra-ui/react";
 import { useRef } from "react";
+import Header from "./components/Header";
 import usePersistedState from "./hooks/usePersistedState";
 
 import { Task } from "./types/Task";
@@ -8,15 +10,19 @@ export default function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   const addTask = () => {
     const inputValue = inputRef.current!.value;
-    const list = [...taskList];
-    const newTask = (name: string): Task => {
-      return {
-        name,
-        isDone: false,
+    if (inputValue === "") {
+      alert("Please, type something!");
+    } else {
+      const list = [...taskList];
+      const newTask = (name: string): Task => {
+        return {
+          name,
+          isDone: false,
+        };
       };
-    };
-    list.push(newTask(inputValue));
-    setTaskList(list);
+      list.push(newTask(inputValue));
+      setTaskList(list);
+    }
   };
   const toggleTask = (index: number) => {
     const list = [...taskList];
@@ -29,11 +35,12 @@ export default function App() {
     setTaskList(list);
   };
   return (
-    <div>
-      <input type="text" ref={inputRef} />
-      <button type="submit" onClick={addTask}>
+    <>
+      <Header />
+      <Input ref={inputRef} />
+      <Button type="submit" onClick={addTask} colorScheme="purple">
         Add task
-      </button>
+      </Button>
       <div id="TaskList">
         {taskList.map((task: Task, index: number) => (
           <div className="task">
@@ -47,6 +54,6 @@ export default function App() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
