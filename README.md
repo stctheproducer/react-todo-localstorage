@@ -1,7 +1,7 @@
 # React Todo
 
 > A simple Todolist using localStorage.
-> Live demo [_here_](https://react-crud-localstorage.netlify.app/).
+> Live demo [_here_](https://react-todo-localstorage.vercel.app/).
 
 ## Table of Contents 📜
 
