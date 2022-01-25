@@ -19,7 +19,7 @@
 
 ## Screenshots 🖼️
 
-![Example screenshot](https://api.site-shot.com/?url=https://react-crud-localstorage.netlify.app/&userkey=IAAIEYKBJAF3BZ6IYT5DVCQMUF)
+![Example screenshot](https://api.site-shot.com/?url=https://react-todo-localstorage.vercel.app/&userkey=IAAIEYKBJAF3BZ6IYT5DVCQMUF)
 
 ## Project Status
 
