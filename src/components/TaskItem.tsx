@@ -1,6 +1,21 @@
 import { Task } from "../types/Task";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Checkbox, Flex, Text } from "@chakra-ui/react";
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  Flex,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
 
 interface TaskProps {
   task: Task;
@@ -15,6 +30,9 @@ export default function TaskItem({
   taskList,
   setTaskList,
 }: TaskProps) {
+  const [popover, setPopover] = useState(false);
+  const closePopover = () => setPopover(false);
+
   const toggleTask = (index: number) => {
     const list = [...taskList];
     list[index].isDone = !list[index].isDone;
@@ -24,6 +42,7 @@ export default function TaskItem({
     const list = [...taskList];
     list.splice(index, 1);
     setTaskList(list);
+    closePopover();
   };
 
   return (
@@ -51,9 +70,30 @@ export default function TaskItem({
       >
         {task.name}
       </Text>
-      <button onClick={() => deleteTask(index)}>
-        <DeleteIcon />
-      </button>
+
+      <Popover isOpen={popover} onClose={closePopover} closeOnBlur={false}>
+        <PopoverTrigger>
+          <button onClick={() => setPopover(true)}>
+            <DeleteIcon />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Confirmation!</PopoverHeader>
+          <PopoverBody>Are you sure you want to delete this task?</PopoverBody>
+          <PopoverFooter d="flex" justifyContent="flex-end">
+            <ButtonGroup size="sm">
+              <Button variant="outline" onClick={closePopover}>
+                Cancel
+              </Button>
+              <Button colorScheme="red" onClick={() => deleteTask(index)}>
+                Delete
+              </Button>
+            </ButtonGroup>
+          </PopoverFooter>
+        </PopoverContent>
+      </Popover>
     </Flex>
   );
 }
