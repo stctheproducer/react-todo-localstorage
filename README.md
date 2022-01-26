@@ -19,7 +19,7 @@
 
 ## Screenshots 🖼️
 
-![Screenshot](https://api.site-shot.com/?url=https://react-todo-localstorage.vercelr.app/&userkey=IAAIEYKBJAF3BZ6IYT5DVCQMUF)
+![Screenshot](https://api.site-shot.com/?url=https://react-todo-localstorage.vercel.app/&userkey=IAAIEYKBJAF3BZ6IYT5DVCQMUF)
 
 ## Project Status
 
