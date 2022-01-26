@@ -5,15 +5,18 @@ export default function Header() {
   return (
     <Flex
       as="header"
-      w="100%"
-      h="40vh"
+      h="30vh"
       bg="purple.700"
       flexDir="column"
       justifyContent="center"
       alignItems="center"
     >
-      <Heading as="h1">Today</Heading>
-      <Heading as="h2">{today.toDateString()}</Heading>
+      <Heading as="h1" size="2xl">
+        Today
+      </Heading>
+      <Heading as="h2" size="md" mt="2.5" fontWeight="500">
+        {today.toDateString()}
+      </Heading>
     </Flex>
   );
 }
